@@ -33,7 +33,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		metode := "s="
 		apikey := "ed7fa361"
-		Masukan := &Bebas{ //menampung user
+		Masukan := &Inputuser{ //menampung user
 			Data: r.Form.Get("cari_judul"),
 		} // minta data ke server dari user
 		baseUrl := "http://www.omdbapi.com/" + "?apikey=" + apikey + "&" + metode + Masukan.Data
@@ -69,8 +69,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		} else { // jika tdk ada error atau bebas.respone== True
 			data := map[string]interface{}{}
-			// tempatid := []string{}
-			// Searchid := &Searchid{}
+
 			Nulisjsons, _ := os.OpenFile("byid.json", os.O_WRONLY|os.O_TRUNC, 0644) //mwmbuka file byid.json
 			defer Nulisjsons.Close()
 			var jsonDslice []interface{}
@@ -89,37 +88,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 				data[strconv.Itoa(i+1)] = data1
 
 				klikmeURL := data1["klikme"].(string)
-				// fmt.Print("=======")
-				// fmt.Println(klikmeURL)
 				jsonDslice = append(jsonDslice, klikmeURL)
 
 			}
-			// fmt.Println(data["1"])
-			// for i, v := range data {
-			// 	fmt.Println("=== ISI JSONDSLICE ===")
-			// 	fmt.Print(i, ". ")
-			// 	fmt.Println(v)
-
-			// 	fmt.Println()
-			// 	fmt.Println()
-
-			// }
-
-			// for _,v:=range data{
-			// 	fmt.Println("======")
-			// 	fmt.Println(v)
-			// 	if v==io.EOF{
-			// 		fmt.Println()
-			// 	}
-			// 	fmt.Println("======")
-
-			// }
-			// json, err := json.MarshalIndent(data, "", "  ")
-			// if err != nil {
-			// 	panic(err)
-			// }
-
-			// fmt.Println(string(json))
 
 			temp, err := template.ParseFiles("index.html")
 			if err != nil {

@@ -1,6 +1,5 @@
 package jauth
 
-
 type Hasil struct {
 	Urutan string `json:"Urutan"`
 	Judul  string `json:"Title"`
@@ -16,8 +15,7 @@ type Search struct {
 	Response    string  `json:"Response"`
 }
 
-
-type Searchid struct {
+type Searchid struct { // not used yet
 	Title    string `json:"Title"`
 	Released string `json:"Released"`
 	Poster   string `json:"Poster"`
@@ -28,6 +26,8 @@ type Searchid struct {
 	Response string `json:"Response"`
 }
 
-type Bebas struct {
-	Data     string //Keluaran Data output atau return
+type Inputuser struct {
+	Data string //Keluaran Data output atau return
 }
+
+type Data map[string]interface{}

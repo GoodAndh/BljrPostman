@@ -56,10 +56,9 @@
 
                 <form action="/" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="cari_judul" placeholder="Cari Judul" value="">
+                        <input type="text" class="form-control" name="cari_judul" placeholder="Cari Judul" value="{{if .Isvalue}} {{.Isvalue}} {{end}}">
                         <button class="btn btn-outline-success" type="submit" id="button-addon2">Search</button>
                     </div>
-
                 </form>
 
             </div>
@@ -79,14 +78,25 @@
 
 
         <div class="row  ">
-            {{range $k,$v := .}}
+
+            {{range $key, $v := .Newdata}}
             <div class="col-md-4">
                 <div class="card mb-3">
                     <img src="{{$v.Poster}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h2 class="card-title text-center">{{$v.Title}}</h2>
                         <p class="card-text">{{$v.Year}}</p>
+
+                     
+
+
                        
+
+
+
+                      
+
+
                     </div>
                 </div>
 
@@ -122,6 +132,9 @@
 
 
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </body>
 
 </html>

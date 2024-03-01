@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	http.HandleFunc("/", pauth.Index)
+	http.HandleFunc("/", pauth.Dindex)
 	http.ListenAndServe(":3000", nil)
 
 }
